@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Paul Tuck
+	email = paul.tuck@oxon.org
+[credential]
+	helper = store
