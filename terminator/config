@@ -1,0 +1,59 @@
+[global_config]
+  borderless = True
+  title_transmit_bg_color = "#000000"
+  title_inactive_bg_color = "#000000"
+  suppress_multiple_term_dialog = True
+[keybindings]
+  hide_window = None
+[profiles]
+  [[default]]
+    background_darkness = 0.7
+    background_type = transparent
+    color_scheme = custom
+    cursor_shape = underline
+    cursor_color = "#57e389"
+    cursor_color_fg = False
+    font = SF Mono Powerline 13
+    foreground_color = "#d8d8d8"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 5000
+    scrollback_infinite = True
+    exit_action = hold
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_custom_command = True
+    custom_command = zsh
+    use_system_font = False
+    bold_is_bright = True
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:1
+      maximised = True
+      fullscreen = False
+      size = 1920, 1049
+      title = paul@pdrt-l:~
+      last_active_term = ef0150b0-7582-45d5-b42f-9ac4bf4f0521
+      last_active_window = True
+    [[[child1]]]
+      type = HPaned
+      parent = child0
+      order = 0
+      position = 958
+      ratio = 0.5002610966057441
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = ef0150b0-7582-45d5-b42f-9ac4bf4f0521
+    [[[terminal3]]]
+      type = Terminal
+      parent = child1
+      order = 1
+      profile = default
+      uuid = 9cd3cacd-119d-4c53-89ea-4ecc7ca7bba8
+[plugins]
