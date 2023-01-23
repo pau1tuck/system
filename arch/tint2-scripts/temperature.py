@@ -1,7 +1,8 @@
+from decouple import config
 import requests
 import json
 
-url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Chan&Chawa?unitGroup=metric&include=current&key=ASRQL55QSXYKL63Y2DCEMFUC3&contentType=json'
+url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Chan&Chawa?unitGroup=metric&include=current&key=' + config('API') + '&contentType=json'
 
 response = requests.get(url)
 text = response.text
