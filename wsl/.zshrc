@@ -3,6 +3,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=$PATH:$HOME/bin
+<<<<<<< HEAD:debian/.zshrc
+=======
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/.anaconda3
+>>>>>>> 5c26c65b673ea30e6a000945b71a6b4a6117a0c8:wsl/.zshrc
 PATH=$PATH:$HOME/.cargo/bin
 
 # Path to your oh-my-zsh installation.
@@ -81,10 +86,14 @@ plugins=(git virtualenv z fast-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+<<<<<<< HEAD:debian/.zshrc
 #bindkey '^I' autosuggest-accept
 #bindkey '\t' autosuggest-accept
 bindkey '^[OQ' autosuggest-accept
 
+=======
+bindkey '^I' autosuggest-accept
+>>>>>>> 5c26c65b673ea30e6a000945b71a6b4a6117a0c8:wsl/.zshrc
 
 # User configuration
 
@@ -111,8 +120,11 @@ autoload -Uz add-zsh-hook vcs_info
 # CUSTOM PROMPT
 NEWLINE=$'\n'
 
+<<<<<<< HEAD:debian/.zshrc
 PROMPT="%* %B%F{cyan}%d %B%F{yellow}$(virtualenv_prompt_info) %F{red}${vcs_info_msg_0_}%f ${NEWLINE}%B%F{green}➜ "
 
+=======
+>>>>>>> 5c26c65b673ea30e6a000945b71a6b4a6117a0c8:wsl/.zshrc
 # Drop this into your .zshrc or .bashrc file:
 git_prompt() {
     local branch="$(git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3-)"
