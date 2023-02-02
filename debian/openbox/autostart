@@ -28,23 +28,25 @@ hsetroot -solid "#2E3436" &
 ## 2. compositor - start
 ## 3. sleep - give compositor time to start
 ## 4. tint2 panel
-#nitrogen --restore &
-#feh --bg-fill "/home/paul/img/bg/wp2618260-blackarch-wallpaper.png"
+
+feh --bg-fill "$HOME/img/bg/python-1.jpg"
 cbpp-compositor --start &
-tint2 &
 numlockx &
 
 ## Start nm-applet for systray
 nm-applet &
 
 ## Volume keys daemon
-#mate-volume-control-status-icon &
+mate-volume-control-status-icon &
+volumeicon-alsa &
 
 ## Enable power management
 #xfce4-power-manager &
 
 ## Start Thunar Daemon
 thunar --daemon &
+
+nitrogen --restore &
 
 ## Start xscreensaver
 #xscreensaver -no-splash &
@@ -53,11 +55,14 @@ thunar --daemon &
 (sleep 3s && parcellite) &
 
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
-## Adjust the values according to your preferances.
-xset r rate 250 25 &
+## Adjust the values according to your preferences.
+xset r rate 350 35 &
 
 ## Turn on/off system beep
 xset b off &
+
+## Swap CAPS LOCK and escape for Vim
+setxkbmap -option caps:swapescape
 
 ## cbpp-user-setup - User space initialization, sets .gtk-bookmarks and
 ## creates symlink in images to wallpaper folder only runs once. Safe to remove.
@@ -67,8 +72,12 @@ xset b off &
 ## only runs once. Safe to remove.
 (sleep 10s && cbpp-welcome --firstrun) &
 
+autokey-gtk &
+#pavucontrol-qt &
+
 ## Run the conky
 #conky -q &
 
+(sleep 3s && tint2) &
 ## Launch the terminal
-(sleep 5s && terminator) &
+(sleep 3 && terminator) &

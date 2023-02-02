@@ -1,12 +1,14 @@
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=$PATH:$HOME/bin
-PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/.cargo/bin
-PATH=$PATH:$HOME/.anaconda3
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,12 +76,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z fast-syntax-highlighting zsh-autosuggestions)
+plugins=(git virtualenv z fast-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-bindkey '^I' autosuggest-accept # Make TAB key accept suggestions
+#bindkey '^I' autosuggest-accept
+#bindkey '\t' autosuggest-accept
+bindkey '^[OQ' autosuggest-accept
+
 
 # User configuration
 
@@ -105,9 +110,10 @@ autoload -Uz add-zsh-hook vcs_info
 
 # CUSTOM PROMPT
 NEWLINE=$'\n'
-PROMPT="%* %B%F{cyan}%d %F{red}${vcs_info_msg_0_}%f ${NEWLINE}%B%F{green}➜ "
 
-# GIT PROMPT
+PROMPT="%* %B%F{cyan}%d %B%F{yellow}$(virtualenv_prompt_info) %F{red}${vcs_info_msg_0_}%f ${NEWLINE}%B%F{green}➜ "
+
+# Drop this into your .zshrc or .bashrc file:
 git_prompt() {
     local branch="$(git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3-)"
     local branch_truncated="${branch:0:30}"
@@ -118,6 +124,7 @@ git_prompt() {
     [ -n "${branch}" ] && echo " (${branch})"
 }
 
+# This is specific to zsh but you could call $(git_prompt) in your .bashrc PS1 too.
 setopt PROMPT_SUBST
 PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}@ %* %B%{$fg[cyan]%}%d%{$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red}➜ %B%F{green}'
 
@@ -125,9 +132,14 @@ PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}@ %* %B%{$fg[cyan]%}%d%{$fg[yell
 alias zshrc="nano ~/.zshrc"
 alias apt="aptitude"
 alias exa="exa -alh"
+alias manage="python3 manage.py"
+alias nightmode="/$HOME/bin/nightmode.sh"
 alias python="python3"
 alias py="python3"
 alias pysa="cd ~/dev/pysaurus-applet/pysaurus/bin/ && python3 pysaurus.py"
+alias install="sudo apt install" 
+alias update="sudo apt update"
+alias upgrade="sudo apt upgrade"
 
 alias home="cd ~"
 alias bin="cd ~/bin"

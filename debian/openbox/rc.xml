@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Natura</name>
+    <name>Arc</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -124,6 +124,7 @@
       <name>sh</name>
       <name>dev</name>
       <name>web</name>
+      <name>#</name>
       <name>fm</name>
     </names>
     <popupTime>875</popupTime>
@@ -177,6 +178,9 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
+    <keybind key="A-m">
+      <action name="Iconify"/>
+    </keybind>
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
         <to>left</to>
@@ -243,6 +247,11 @@
     <keybind key="W-4">
       <action name="GoToDesktop">
         <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop">
+        <to>5</to>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -467,12 +476,12 @@
         <decor>no</decor>
       </action>
     </keybind>
-    <keybind key="S-A-s">
+    <keybind key="S-A-w">
       <action name="Execute">
         <command>angrysearch</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Search</name>
+          <name>Angry Search</name>
         </startupnotify>
       </action>
     </keybind>
@@ -499,7 +508,25 @@
         <command>brave-browser-nightly</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Web Browser</name>
+          <name>Brave Nightly</name>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="S-A-c">
+      <action name="Execute">
+        <command>google-chrome-stable</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Google Chrome</name>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="S-A-s">
+      <action name="Execute">
+        <command>deepin-screenshot</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Deepin Screenshot</name>
         </startupnotify>
       </action>
     </keybind>
@@ -1027,6 +1054,15 @@
       <focus>yes</focus>
       <maximized>yes</maximized>
       <decor>no</decor>
+    </application>
+    <application name="google-chrome" class="Google-chrome">
+      <focus>yes</focus>
+      <maximized>yes</maximized>
+      <decor>no</decor>
+    </application>
+    <application class="thunar">
+      <focus>yes</focus>
+      <maximized>yes</maximized>
     </application>
   </applications>
 </openbox_config>
