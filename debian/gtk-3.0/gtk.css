@@ -1,0 +1,7 @@
+\VteTerminal, vte-terminal {
+    padding-left: 20px;
+}
+separator {
+	min-width: 1px;
+	min-height: 1px;
+}
