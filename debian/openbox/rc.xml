@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+<openbox_config xmlns="http://openbox.org/3.4/rc"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
@@ -118,12 +119,12 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>3</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>sh</name>
       <name>dev</name>
       <name>web</name>
+      <name>#</name>
       <name>#</name>
       <name>fm</name>
     </names>
@@ -332,6 +333,13 @@
         <direction>down</direction>
       </action>
     </keybind>
+    <!-- Maximize, minimize, and restore window size -->
+    <keybind key="S-W-m">
+      <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="S-W-A-m">
+      <action name="ToggleMinimize"/>
+    </keybind>
     <!-- Keybindings for running applications -->
     <keybind key="A-F2">
       <action name="Execute">
@@ -450,19 +458,39 @@
     <!-- Keybindings for window tiling -->
     <keybind key="W-Left">    	# HalfLeftScreen
       <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>50%</width>
+      </action>
     </keybind>
     <keybind key="W-Right">    	# HalfRightScreen
       <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>50%</width>
+      </action>
     </keybind>
     <keybind key="W-Up">    	# HalfUpperScreen
       <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><width>100%</width><height>50%</height></action>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
     </keybind>
     <keybind key="W-Down">    	# HalfLowerScreen
       <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>-0</y><width>100%</width><height>50%</height></action>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>-0</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
     </keybind>
     <!-- CUSTOM -->
     <keybind key="S-A-t">
@@ -528,6 +556,13 @@
           <enabled>yes</enabled>
           <name>Deepin Screenshot</name>
         </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="S-A-x">
+      <action name="Execute">
+        <command>cbpp-exit</command>
+        <enabled>yes</enabled>
+        <name>Exit</name>
       </action>
     </keybind>
   </keyboard>
