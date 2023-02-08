@@ -111,7 +111,7 @@ autoload -Uz add-zsh-hook vcs_info
 # CUSTOM PROMPT
 NEWLINE=$'\n'
 
-PROMPT="%* %B%F{cyan}%d %B%F{yellow}$(virtualenv_prompt_info) %F{red}${vcs_info_msg_0_}%f ${NEWLINE}%B%F{green}➜ "
+PROMPT="%* %B%F{cyan}%d %B%F{yellow}(\[\033[1;34m\]env\[\033[0m\]) %F{red}${vcs_info_msg_0_}%F ${NEWLINE}%B%F{green}➜ "
 
 # Drop this into your .zshrc or .bashrc file:
 git_prompt() {
@@ -124,14 +124,23 @@ git_prompt() {
     [ -n "${branch}" ] && echo " (${branch})"
 }
 
+if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV=" ${BLUE}[`basename \"$VIRTUAL_ENV\"`]${COLOR_NONE} "
+fi
+
 # This is specific to zsh but you could call $(git_prompt) in your .bashrc PS1 too.
 setopt PROMPT_SUBST
-PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}@ %* %B%{$fg[cyan]%}%d%{$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red}➜ %B%F{green}'
+PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}@ %*%B%F{red}$PYTHON_VIRTUALENV%B%{$fg[cyan]%}%d%{$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red}➜ %B%F{green}'
 
 # Aliases
 alias zshrc="nano ~/.zshrc"
 alias apt="aptitude"
-alias exa="exa -alh"
+alias bat="batcat"
+alias br="broot"
+alias exa="exa -AlhF"
+alias hidden="ls -Alhd .*"
 alias manage="python3 manage.py"
 alias nightmode="/$HOME/bin/nightmode.sh"
 alias python="python3"
@@ -147,5 +156,7 @@ alias dev="cd ~/dev"
 alias dl="cd ~/dl"
 alias dox="cd ~/dox"
 alias img="cd ~/img"
+alias pub="cd ~/pub"
+alias tmp="cd ~/tmp"
 alias etc="cd /etc && ls"
-alias shared="cd ~/shared"
+alias share="cd ~/share"
