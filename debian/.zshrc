@@ -127,12 +127,12 @@ git_prompt() {
 if test -z "$VIRTUAL_ENV" ; then
       PYTHON_VIRTUALENV=""
   else
-      PYTHON_VIRTUALENV=" ${BLUE}[`basename \"$VIRTUAL_ENV\"`]${COLOR_NONE} "
+      PYTHON_VIRTUALENV=" ${BLUE}[`basename \"$VIRTUAL_ENV\"`]${COLOR_NONE}"
 fi
 
 # This is specific to zsh but you could call $(git_prompt) in your .bashrc PS1 too.
 setopt PROMPT_SUBST
-PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}@ %*%B%F{red}$PYTHON_VIRTUALENV%B%{$fg[cyan]%}%d%{$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red}➜ %B%F{green}'
+PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}on %B%F{green}%m %B%F{white}at %B%F{yellow}%*%B%F{red}$PYTHON_VIRTUALENV %B%{$fg[cyan]%}%~$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red}➜ %B%F{green}'
 
 # Aliases
 alias zshrc="nano ~/.zshrc"
