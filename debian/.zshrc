@@ -1,5 +1,3 @@
-
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 PATH=$PATH:$HOME/bin
@@ -14,7 +12,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=0
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -85,7 +83,6 @@ source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 #bindkey '\t' autosuggest-accept
 bindkey '^[OQ' autosuggest-accept
 
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -103,7 +100,6 @@ bindkey '^[OQ' autosuggest-accept
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-
 # Autoload zsh add-zsh-hook and vcs_info functions (-U autoload w/o substition, -z use zsh style)
 autoload -Uz add-zsh-hook vcs_info
 # Enable substitution in the prom
@@ -111,42 +107,39 @@ autoload -Uz add-zsh-hook vcs_info
 # CUSTOM PROMPT
 NEWLINE=$'\n'
 
-PROMPT="%* %B%F{cyan}%d %B%F{yellow}(\[\033[1;34m\]env\[\033[0m\]) %F{red}${vcs_info_msg_0_}%F ${NEWLINE}%B%F{green}➜ "
-
 # Drop this into your .zshrc or .bashrc file:
 git_prompt() {
-    local branch="$(git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3-)"
+    local branch="$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3-)"
     local branch_truncated="${branch:0:30}"
-    if (( ${#branch} > ${#branch_truncated} )); then
+    if ((${#branch} > ${#branch_truncated})); then
         branch="${branch_truncated}..."
     fi
 
-    [ -n "${branch}" ] && echo " (${branch})"
+    [ -n "${branch}" ] && echo " (${branch}) "
 }
 
-if test -z "$VIRTUAL_ENV" ; then
-      PYTHON_VIRTUALENV=""
-  else
-      PYTHON_VIRTUALENV=" ${BLUE}[`basename \"$VIRTUAL_ENV\"`]${COLOR_NONE}"
+if test -z "$VIRTUAL_ENV"; then
+    PYTHON_VIRTUALENV=""
+else
+    PYTHON_VIRTUALENV=" ${BLUE}[$(basename \"$VIRTUAL_ENV\")]${COLOR_NONE}"
 fi
 
 # This is specific to zsh but you could call $(git_prompt) in your .bashrc PS1 too.
 setopt PROMPT_SUBST
-PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}on %B%F{green}%m %B%F{white}at %B%F{yellow}%*%B%F{red}$PYTHON_VIRTUALENV %B%{$fg[cyan]%}%~$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red}➜ %B%F{green}'
+PROMPT='${NEWLINE}%B%{$fg[green]%}%n %B%F{white}on %B%F{green}%m %B%F{white}at %B%F{yellow}%*%B%F{red}$PYTHON_VIRTUALENV %B%{$fg[cyan]%}%~$fg[yellow]%}$(git_prompt)%{$reset_color%} ${NEWLINE}%B%F{red} > %B%F{green}%B%F{white}'
 
 # Aliases
 alias zshrc="nano ~/.zshrc"
 alias apt="aptitude"
 alias bat="batcat"
 alias br="broot"
-alias exa="exa -AlhF"
+alias exa="exa -alhF"
 alias hidden="ls -Alhd .*"
 alias manage="python3 manage.py"
 alias nightmode="/$HOME/bin/nightmode.sh"
 alias python="python3"
 alias py="python3"
-alias pysa="cd ~/dev/pysaurus-applet/pysaurus/bin/ && python3 pysaurus.py"
-alias install="sudo apt install" 
+alias install="sudo apt install"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
 
@@ -158,5 +151,6 @@ alias dox="cd ~/dox"
 alias img="cd ~/img"
 alias pub="cd ~/pub"
 alias tmp="cd ~/tmp"
-alias etc="cd /etc && ls"
 alias share="cd ~/share"
+
+echo Welcome, Paul.
